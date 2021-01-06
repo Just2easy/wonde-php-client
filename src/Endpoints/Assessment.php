@@ -11,7 +11,7 @@ class Assessment extends BootstrapEndpoint
     /**
      * @var string
      */
-    public  $uri = '';
+    public $uri = '';
 
     /**
      * @var Templates

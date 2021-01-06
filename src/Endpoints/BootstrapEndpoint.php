@@ -13,7 +13,7 @@ class BootstrapEndpoint
      * @deprecated To allow for regional domains. Use getEndpoint instead
      * @see BootstrapEndpoint::getEndpoint()
      */
-    const endpoint = 'https://api.wonde.com/v1.0/';
+    const ENDPOINT = 'https://api.wonde.com/v1.0/';
 
     /**
      * @var string
@@ -54,23 +54,12 @@ class BootstrapEndpoint
      */
     private function client()
     {
-        if ((float) Client::VERSION >= 6) {
-            return new Client([
-                'headers' => [
-                    'Authorization' => 'Basic ' . base64_encode($this->token . ':'),
-                    'User-Agent'    => 'wonde-php-client-' . \Wonde\Client::version
-                ]
-            ]);
-        } else {
-            return new Client([
-                'defaults' => [
-                    'headers' => [
-                        'Authorization' => 'Basic ' . base64_encode($this->token . ':'),
-                        'User-Agent'    => 'wonde-php-client-' . \Wonde\Client::version
-                    ]
-                ]
-            ]);
-        }
+        return new Client([
+            'headers' => [
+                'Authorization' => 'Basic ' . base64_encode($this->token . ':'),
+                'User-Agent'    => 'wonde-php-client-' . \Wonde\Client::VERSION
+            ]
+        ]);
     }
 
     /**
